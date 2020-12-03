@@ -1,5 +1,6 @@
 module Main where
 import Data.List
+import System.Environment
 
 readLines :: FilePath -> IO [Int]
 readLines = fmap (fmap read) . (fmap lines . readFile)
@@ -11,4 +12,7 @@ solvePuzzle :: [Int] -> Int -> [Int]
 solvePuzzle xs yr = nub $ map (\(x, y) -> x * y) (findPairs xs yr)
 
 main :: IO ()
-main = putStrLn "Hello, Haskell!"
+main = do
+    args    <- getArgs
+    xs      <- readLines $ head args
+    print $ solvePuzzle xs 2020
