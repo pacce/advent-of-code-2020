@@ -38,6 +38,6 @@ main = do
     { result <- parseFromFile policies "./input/input.txt"
     ; case result of
         Left err -> print err
-        Right ps -> print ps
+        Right ps -> print $ length (filter valid ps)
     }
 
