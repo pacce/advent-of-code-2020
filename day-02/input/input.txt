@@ -190,7 +190,7 @@
 2-4 n: zgfn
 18-20 w: gmbwtzgzpmdwstsffqzw
 9-19 j: jjjjjjjjkjjjjjjjjjjj
-16-9 f: fffffffffffffrffffzf
+16-19 f: fffffffffffffrffffzf
 8-20 l: htdlzwsllllccwlflstf
 3-4 w: wwww
 2-4 b: sbbz
