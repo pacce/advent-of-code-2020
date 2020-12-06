@@ -5,8 +5,10 @@ module Main where
 import Text.Parsec
 import Text.Parsec.Text
 
-type Key    = String
-type Value  = String
+type Key        = String
+type Value      = String
+type Field      = (Key, Value)
+type Passport   = [Field]
 
 (<:>) a b = (:) <$> a <*> b
 
@@ -29,7 +31,7 @@ value = choice
 separator :: Stream s m Char => ParsecT s u m Char
 separator = space <|> tab <|> newline
 
-field :: Stream s m Char => ParsecT s u m (Key, Value)
+field :: Stream s m Char => ParsecT s u m Field
 field = do
     { k <- key
     ; _ <- char ':'
@@ -38,10 +40,10 @@ field = do
     ; return (k, v)
     }
 
-passport :: Stream s m Char => ParsecT s u m [(Key, Value)]
+passport :: Stream s m Char => ParsecT s u m Passport
 passport = many1 field
 
-passports :: Stream s m Char => ParsecT s u m [[(Key, Value)]]
+passports :: Stream s m Char => ParsecT s u m [Passport]
 passports = sepBy passport endOfLine
 
 main :: IO ()
