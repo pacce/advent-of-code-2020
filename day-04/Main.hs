@@ -15,11 +15,11 @@ type Passport   = [Field]
 key :: Stream s m Char => ParsecT s u m Key
 key = choice
     [ string "byr"
-    , string "iyr"
-    , (char 'e' <:> (string "yr" <|> string "cl"))
-    , (char 'h' <:> (string "gt" <|> string "cl"))
-    , string "pid"
     , string "cid"
+    , (char 'e' <:> (string "cl" <|> string "yr"))
+    , (char 'h' <:> (string "cl" <|> string "gt"))
+    , string "iyr"
+    , string "pid"
     ]
 
 value :: Stream s m Char => ParsecT s u m Value
