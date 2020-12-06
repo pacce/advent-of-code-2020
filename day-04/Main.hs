@@ -46,10 +46,16 @@ passport = many1 field
 passports :: Stream s m Char => ParsecT s u m [Passport]
 passports = sepBy passport endOfLine
 
+valid :: Passport -> Bool
+valid p = length (filter (\v -> v) vs) >= length rs
+    where rs = ["byr", "ecl", "eyr", "hcl", "hgt", "iyr", "pid"]
+          ks = map (\(k, _) -> k) p
+          vs = map (\r -> r `elem` ks) rs
+
 main :: IO ()
 main = do
     { result <- parseFromFile passports "./input/input.txt"
     ; case result of
         Left err -> print err
-        Right ps -> print $ length ps
+        Right ps -> print $ length (filter valid ps)
     }
