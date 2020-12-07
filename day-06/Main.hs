@@ -23,7 +23,7 @@ solve gs = Prelude.foldr (+) 0 (fmap process gs)
 
 main :: IO ()
 main = do
-    { result <- parseFromFile group "input/reference.txt"
+    { result <- parseFromFile group "input/input.txt"
     ; case result of
         Left err -> print err
         Right ps -> print $ solve ps
