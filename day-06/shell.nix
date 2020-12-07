@@ -4,14 +4,14 @@ let
 
   inherit (nixpkgs) pkgs;
 
-  f = { mkDerivation, base, stdenv }:
+  f = { mkDerivation, base, parsec, stdenv }:
       mkDerivation {
         pname = "day06";
         version = "0.1.0.0";
         src = ./.;
         isLibrary = false;
         isExecutable = true;
-        executableHaskellDepends = [ base ];
+        executableHaskellDepends = [ base parsec ];
         license = "unknown";
         hydraPlatforms = stdenv.lib.platforms.none;
       };
