@@ -9,3 +9,4 @@
 | 03 | [Toboggan Trajectory](https://adventofcode.com/2020/day/3) | [Main.hs](day-03/Main.hs) | [input.txt](day-03/input/input.txt) |
 | 04 | [Passport Processing](https://adventofcode.com/2020/day/4) | [Main.hs](day-04/Main.hs) | [input.txt](day-04/input/input.txt) |
 | 05 | [Binary Boarding](https://adventofcode.com/2020/day/5) | [Main.hs](day-05/Main.hs) | [input.txt](day-05/input/input.txt) |
+| 06 | [Custom Customs](https://adventofcode.com/2020/day/6) | [Main.hs](day-06/Main.hs) | [input.txt](day-06/input/input.txt) |
