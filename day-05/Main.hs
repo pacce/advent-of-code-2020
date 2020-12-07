@@ -50,5 +50,5 @@ solve = map (uid . seat . bsp)
 
 main :: IO ()
 main = do
-    xs <- fmap lines (readFile "input/reference.txt")
+    xs <- fmap lines (readFile "input/input.txt")
     print $ maximum (solve xs)
