@@ -77,7 +77,7 @@ solve rs d = xs `union` (foldr (++) [] ys)
 
 main :: IO ()
 main = do
-    { result <- parseFromFile (many1 rule) "input/reference.txt"
+    { result <- parseFromFile (many1 rule) "input/input.txt"
     ; case result of
         Left err    -> print err
         Right rules -> print $ length (solve rules "shiny gold")
