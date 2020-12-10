@@ -70,15 +70,15 @@ rule = do
 valid :: [Rule] -> Description -> [Description]
 valid rs d = map fst (filter (\(x, y) -> d `elem` y) rs)
 
-solve :: [Rule] -> Description -> Int
-solve rs d = length $ xs `union` (foldr (++) [] ys)
+solve :: [Rule] -> Description -> [Description]
+solve rs d = xs `union` (foldr (++) [] ys)
     where xs = valid rs d
-          ys = map (valid rs) xs
+          ys = map (solve rs) xs
 
 main :: IO ()
 main = do
     { result <- parseFromFile (many1 rule) "input/reference.txt"
     ; case result of
         Left err    -> print err
-        Right rules -> print $ solve rules "shiny gold"
+        Right rules -> print $ length (solve rules "shiny gold")
     }
