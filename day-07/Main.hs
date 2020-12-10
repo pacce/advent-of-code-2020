@@ -2,6 +2,7 @@
 
 module Main where
 
+import Data.List
 import Text.Parsec
 import Text.Parsec.Text
 
@@ -66,10 +67,18 @@ rule = do
     ; return (x, foldr (++) [] ys)
     }
 
+valid :: [Rule] -> Description -> [Description]
+valid rs d = map fst (filter (\(x, y) -> d `elem` y) rs)
+
+solve :: [Rule] -> Description -> Int
+solve rs d = length $ xs `union` (foldr (++) [] ys)
+    where xs = valid rs d
+          ys = map (valid rs) xs
+
 main :: IO ()
 main = do
     { result <- parseFromFile (many1 rule) "input/reference.txt"
     ; case result of
-        Left err -> print err
-        Right ps -> print ps
+        Left err    -> print err
+        Right rules -> print $ solve rules "shiny gold"
     }
