@@ -10,7 +10,8 @@ type Adjective      = [Char]
 type Bag            = [Char]
 type Color          = [Char]
 type Description    = [Char]
-type Rule           = (Description, [Description])
+type Contained      = (Description, Int)
+type Rule           = (Description, [Contained])
 type Verb           = [Char]
 
 adjective :: Stream s m Char => ParsecT s u m Adjective
@@ -38,7 +39,7 @@ description = do
     ; return (a ++ " " ++ c)
     }
 
-empty :: Stream s m Char => ParsecT s u m [Description]
+empty :: Stream s m Char => ParsecT s u m [Contained]
 empty = do
     { _ <- string "no other"
     ; _ <- spaces
@@ -49,9 +50,9 @@ empty = do
 container :: Stream s m Char => ParsecT s u m Description
 container = description
 
-contained :: Stream s m Char => ParsecT s u m [Description]
+contained :: Stream s m Char => ParsecT s u m [Contained]
 contained = choice
-    [ do { _ <- natural ; _ <- spaces ; x <- description ; return [x] }
+    [ do { n <- natural ; _ <- spaces ; x <- description ; return [(x, n)] }
     , empty
     ]
 
@@ -68,7 +69,8 @@ rule = do
     }
 
 valid :: [Rule] -> Description -> [Description]
-valid rs d = map fst (filter (\(x, y) -> d `elem` y) rs)
+valid rs d = map fst (filter (\(x, y) -> d `elem` y) xy)
+    where xy = map (\(x, y) -> (x, fmap fst y)) rs
 
 solve :: [Rule] -> Description -> [Description]
 solve rs d = xs `union` (foldr (++) [] ys)
