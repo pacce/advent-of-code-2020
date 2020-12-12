@@ -77,10 +77,17 @@ solve rs d = xs `union` (foldr (++) [] ys)
     where xs = valid rs d
           ys = map (solve rs) xs
 
+accumulate :: [Rule] -> Description -> Int
+accumulate rs d = foldr (+) 1 acc
+    where cs    = (snd . head . filter (\(r, c) -> r == d)) rs
+          acc   = map (\(x, i) -> i * (accumulate rs x)) cs
+
 main :: IO ()
 main = do
     { result <- parseFromFile (many1 rule) "input/input.txt"
     ; case result of
         Left err    -> print err
-        Right rules -> print $ length (solve rules "shiny gold")
+        Right rules
+            -> (print $ length (solve rules "shiny gold"))
+            >> (print $ accumulate rules "shiny gold")  -- The solution is wrong, should decrement one
     }
