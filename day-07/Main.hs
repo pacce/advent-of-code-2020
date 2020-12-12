@@ -89,5 +89,5 @@ main = do
         Left err    -> print err
         Right rules
             -> (print $ length (solve rules "shiny gold"))
-            >> (print $ accumulate rules "shiny gold")  -- The solution is wrong, should decrement one
+            >> (print $ (accumulate rules "shiny gold") - 1)  -- The solution is wrong, should decrement one
     }
