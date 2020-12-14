@@ -46,7 +46,12 @@ solve m s = hit m stepper start 0
      where stepper = step (mapWidth m) s
            start   = (0, 0)
 
+solve2 :: Map -> [Step] -> Count
+solve2 m ss = foldr (*) 1 hs
+    where hs = map (solve m) ss
+
 main :: IO ()
 main = do
     xs <- fmap lines (readFile "input/input.txt")
     print $ solve (createMap xs) (3, 1)
+    print $ solve2 (createMap xs) [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)]
