@@ -1,7 +1,5 @@
 module Main where
 
-import qualified Data.List
-
 type BSP    = [Char]
 type Range  = (Int, Int)
 
@@ -54,9 +52,9 @@ solve :: [BSP] -> Id
 solve = maximum . uids
 
 solve2 :: [BSP] -> Id
-solve2 xs = (head $ filter chk us) + 1
+solve2 xs = head $ filter (\y -> not (y `elem` us)) ys
     where us = uids xs
-          chk x = not (x + 1 `elem` us) && (x + 2 `elem` us)
+          ys = [(minimum us)..(maximum us)]
 
 main :: IO ()
 main = do
