@@ -1,5 +1,7 @@
 module Main where
 
+import qualified Data.List
+
 type BSP    = [Char]
 type Range  = (Int, Int)
 
@@ -45,10 +47,19 @@ seat ps = (horizontal (0, 127) rs, vertical (0, 7) cs)
 uid :: Seat -> Id
 uid (x, y) = x * 8 + y
 
-solve :: [BSP] -> [Id]
-solve = map (uid . seat . bsp)
+uids :: [BSP] -> [Id]
+uids = map (uid . seat . bsp)
+
+solve :: [BSP] -> Id
+solve = maximum . uids
+
+solve2 :: [BSP] -> Id
+solve2 xs = (head $ filter chk us) + 1
+    where us = uids xs
+          chk x = not (x + 1 `elem` us) && (x + 2 `elem` us)
 
 main :: IO ()
 main = do
     xs <- fmap lines (readFile "input/input.txt")
-    print $ maximum (solve xs)
+    print $ solve xs
+    print $ solve2 xs
