@@ -11,3 +11,4 @@
 | 05 | [Binary Boarding](https://adventofcode.com/2020/day/5) | [Main.hs](day-05/Main.hs) | [input.txt](day-05/input/input.txt) |
 | 06 | [Custom Customs](https://adventofcode.com/2020/day/6) | [Main.hs](day-06/Main.hs) | [input.txt](day-06/input/input.txt) |
 | 07 | [Handy Haversacks](https://adventofcode.com/2020/day/7) | [Main.hs](day-07/Main.hs) | [input.txt](day-07/input/input.txt) |
+| 08 | [Handheld Halting](https://adventofcode.com/2020/day/8) | [Main.hs](day-08/Main.hs) | [input.txt](day-08/input/input.txt) |

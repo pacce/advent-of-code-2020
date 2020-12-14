@@ -78,7 +78,7 @@ execute e
 
 main :: IO ()
 main = do
-    { result <- parseFromFile (many1 opcode) "input/reference.txt"
+    { result <- parseFromFile (many1 opcode) "input/input.txt"
     ; case result of
         Left err -> print err
         Right os -> print $ (execute . mkExecution) os
