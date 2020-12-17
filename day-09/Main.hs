@@ -22,5 +22,5 @@ solve k xs = head $ filter isJust ys
 
 main :: IO ()
 main = do
-    xs <- fmap lines $ readFile "input/reference.txt"
-    print $ solve 5 (fmap read xs)
+    xs <- fmap lines $ readFile "input/input.txt"
+    print $ solve 25 (fmap read xs)
