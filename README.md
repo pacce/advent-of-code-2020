@@ -13,3 +13,4 @@
 | 07 | [Handy Haversacks](https://adventofcode.com/2020/day/7) | [Main.hs](day-07/Main.hs) | [input.txt](day-07/input/input.txt) |
 | 08 | [Handheld Halting](https://adventofcode.com/2020/day/8) | [Main.hs](day-08/Main.hs) | [input.txt](day-08/input/input.txt) |
 | 09 | [Encoding Error](https://adventofcode.com/2020/day/9) | [Main.hs](day-09/Main.hs) | [input.txt](day-09/input/input.txt) |
+| 10 | [Adapter Array](https://adventofcode.com/2020/day/10) | [Main.hs](day-10/Main.hs) | [input.txt](day-10/input/input.txt) |
