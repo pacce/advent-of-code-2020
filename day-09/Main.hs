@@ -31,10 +31,10 @@ solve2 v vs = (maximum xs) + (minimum xs)
 
 main :: IO ()
 main = do
-    xs <- fmap lines $ readFile "input/reference.txt"
+    xs <- fmap lines $ readFile "input/input.txt"
     let ys = fmap (read::String -> Int) xs
 
-    case solve 5 ys of
+    case solve 25 ys of
         Just x  -> print x
                 >> (print $ solve2 x ys)
         Nothing -> print "unsovable"
